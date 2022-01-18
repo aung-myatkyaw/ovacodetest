@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="OvaCodeTest.Views.MessagePopup.MessagePopupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:OvaCodeTest.Triggers"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+            <Frame
+                Grid.Row="1"
+                Margin="20"
+                BackgroundColor="White"
+                CornerRadius="10"
+                IsClippedToBounds="true">
+
+                <StackLayout Margin="20" Spacing="10">
+
+                    <Label
+                        x:Name="TitleLabel"
+                        BackgroundColor="Transparent"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{DynamicResource Primary}" />
+
+                    <ScrollView VerticalOptions="FillAndExpand">
+                        <StackLayout x:Name="stkMessage" BackgroundColor="Transparent">
+                            <Label
+                                x:Name="MessageLabel"
+                                BackgroundColor="Transparent"
+                                FontSize="14"
+                                TextColor="{DynamicResource HeaderTextColor}" />
+                        </StackLayout>
+                    </ScrollView>
+                    <Grid RowDefinitions="40">
+                        <Button
+                            Grid.Column="0"
+                            Clicked="Button_Clicked"
+                            CornerRadius="5"
+                            FontSize="12"
+                            HeightRequest="46"
+                            Style="{DynamicResource LoginButtonStyle}"
+                            Text="OK">
+                            <Button.Triggers>
+                                <EventTrigger Event="Clicked">
+                                    <local:ExpandButtonTriggerAction />
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </Grid>
+
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</pages:PopupPage>

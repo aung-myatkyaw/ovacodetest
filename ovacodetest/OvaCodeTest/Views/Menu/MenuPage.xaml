@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OvaCodeTest.Views.Menu.MenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Menu">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ShoppingCartCommand}" IconImageSource="cart" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <Frame
+            Margin="10,10,10,5"
+            Padding="10"
+            BackgroundColor="{DynamicResource MainBackgroundColor}"
+            CornerRadius="20">
+            <ListView
+                x:Name="MenuListView"
+                BackgroundColor="Transparent"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                IsVisible="{Binding ShowMenu}"
+                ItemTapped="MenuListView_ItemTapped"
+                ItemTemplate="{Binding ListViewItemTemplate}"
+                ItemsSource="{Binding MenuList}"
+                SelectionMode="None"
+                SeparatorVisibility="Default"
+                VerticalScrollBarVisibility="Never">
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="Transparent">
+                                <Grid
+                                    Margin="5,10,5,5"
+                                    BackgroundColor="Transparent"
+                                    ColumnDefinitions="6*,4*"
+                                    RowDefinitions="Auto">
+                                    <Label
+                                        FontSize="13"
+                                        Text="{Binding Id}"
+                                        TextColor="{DynamicResource Primary}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="16"
+                                        Text="{Binding Text}"
+                                        TextColor="{DynamicResource Primary}" />
+                                </Grid>
+                                <BoxView HeightRequest="0.5" Style="{StaticResource SeparatorStyle}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+            </ListView>
+        </Frame>
+    </StackLayout>
+
+</ContentPage>

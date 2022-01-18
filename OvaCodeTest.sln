@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvaCodeTest.Android", "OvaCodeTest\OvaCodeTest.Android\OvaCodeTest.Android.csproj", "{522206F7-AE88-4AB7-BB48-B6F474DFFA8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvaCodeTest", "OvaCodeTest\OvaCodeTest\OvaCodeTest.csproj", "{9EA32643-B843-4999-86EE-51C8AF9639B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{522206F7-AE88-4AB7-BB48-B6F474DFFA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522206F7-AE88-4AB7-BB48-B6F474DFFA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522206F7-AE88-4AB7-BB48-B6F474DFFA8C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{522206F7-AE88-4AB7-BB48-B6F474DFFA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522206F7-AE88-4AB7-BB48-B6F474DFFA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522206F7-AE88-4AB7-BB48-B6F474DFFA8C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9EA32643-B843-4999-86EE-51C8AF9639B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA32643-B843-4999-86EE-51C8AF9639B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA32643-B843-4999-86EE-51C8AF9639B1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9EA32643-B843-4999-86EE-51C8AF9639B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA32643-B843-4999-86EE-51C8AF9639B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA32643-B843-4999-86EE-51C8AF9639B1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64EF0E31-E7CC-4CAE-9FBC-EAEFA8488C0D}
+	EndGlobalSection
+EndGlobal

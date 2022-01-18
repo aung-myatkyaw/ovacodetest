@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="OvaCodeTest.Views.ShoppingCart.ShoppingPopupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
+    xmlns:local="clr-namespace:OvaCodeTest.Triggers"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <!--  You can set an animation in the xaml file or in the csharp code behind  -->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <AbsoluteLayout BackgroundColor="Transparent">
+        <Frame
+            Margin="20"
+            Padding="0"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="{DynamicResource MainBackgroundColor}"
+            CornerRadius="10"
+            HasShadow="True"
+            HorizontalOptions="FillAndExpand"
+            IsClippedToBounds="True"
+            VerticalOptions="FillAndExpand">
+
+            <Grid
+                Padding="10,0"
+                ColumnDefinitions="Auto,Auto"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                RowSpacing="15"
+                VerticalOptions="FillAndExpand">
+                <Image
+                    x:Name="closeButton"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0,10,10,0"
+                    Aspect="AspectFit"
+                    HeightRequest="24"
+                    HorizontalOptions="End"
+                    Source="cross"
+                    VerticalOptions="Start"
+                    WidthRequest="24">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Close_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label
+                    Grid.Row="1"
+                    Margin="0"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    HorizontalTextAlignment="Start"
+                    Text="Stock Code:"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="0"
+                    FontSize="16"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding SelectedDetail.StockCode}"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+
+                <Label
+                    Grid.Row="2"
+                    Margin="0"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    HorizontalTextAlignment="Start"
+                    Text="Stock Name:"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="0"
+                    FontSize="16"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding SelectedDetail.StockName}"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+
+                <Label
+                    Grid.Row="3"
+                    Margin="0"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    HorizontalTextAlignment="Start"
+                    Text="Unit Price:"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="0"
+                    FontSize="16"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding SelectedPrice}"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+                <Label
+                    Grid.Row="4"
+                    Margin="0"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    HorizontalTextAlignment="Start"
+                    Text="QTY:"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+                <StackLayout
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Margin="0"
+                    HorizontalOptions="EndAndExpand"
+                    Orientation="Horizontal">
+                    <Image
+                        HeightRequest="15"
+                        Source="down_indicator"
+                        VerticalOptions="Start"
+                        WidthRequest="15">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DownTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="0"
+                        FontSize="16"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding SelectedQTY}"
+                        TextColor="{DynamicResource HeaderTextColor}" />
+                    <controls:TintedImage
+                        HeightRequest="15"
+                        Source="up_indicator"
+                        TintColor="Green"
+                        VerticalOptions="Start"
+                        WidthRequest="15">
+                        <controls:TintedImage.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="UpTapped" />
+                        </controls:TintedImage.GestureRecognizers>
+                    </controls:TintedImage>
+                </StackLayout>
+
+                <BoxView
+                    Grid.Row="5"
+                    Grid.ColumnSpan="2"
+                    HeightRequest="0.5"
+                    Style="{StaticResource SeparatorStyle}" />
+
+                <Label
+                    Grid.Row="6"
+                    Margin="0"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    HorizontalTextAlignment="Start"
+                    Text="TOTAL:"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+                <Label
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Margin="0"
+                    FontSize="16"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding SelectedTotal}"
+                    TextColor="{DynamicResource HeaderTextColor}" />
+            </Grid>
+        </Frame>
+        <Button
+            x:Name="updateButton"
+            Margin="10"
+            AbsoluteLayout.LayoutBounds="0,1,1,-1"
+            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+            Clicked="Update_Clicked"
+            CornerRadius="5"
+            FontSize="14"
+            HeightRequest="46"
+            Style="{DynamicResource LoginButtonStyle}"
+            Text="Update"
+            VerticalOptions="EndAndExpand">
+            <Button.Triggers>
+                <EventTrigger Event="Clicked">
+                    <local:ExpandButtonTriggerAction />
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+    </AbsoluteLayout>
+</pages:PopupPage>

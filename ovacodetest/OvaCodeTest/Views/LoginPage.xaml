@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OvaCodeTest.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:OvaCodeTest.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout
+            x:Name="loginView"
+            Padding="10,0,10,0"
+            VerticalOptions="Center">
+            <Image
+                HeightRequest="150"
+                HorizontalOptions="Center"
+                Source="logo"
+                WidthRequest="150" />
+            <!--  LoginUsername  -->
+            <Frame
+                x:Name="UserNameFrame"
+                Margin="5"
+                Style="{DynamicResource MsgFrameStyle}">
+                <Grid Margin="5,0" VerticalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="90*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="0"
+                        Source="user"
+                        Style="{StaticResource FrameStartIconStyle}" />
+                    <custom:CustomEntry
+                        x:Name="loginUsernameBox"
+                        Grid.Column="1"
+                        Placeholder="User Name"
+                        Style="{DynamicResource MsgEntryStyle}"
+                        Text="{Binding LoginUsername}" />
+                </Grid>
+            </Frame>
+
+            <!--  LoginPassword  -->
+            <Frame
+                x:Name="passwordFrame"
+                Margin="5"
+                Style="{DynamicResource MsgFrameStyle}">
+                <Grid Margin="5,0" VerticalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="80*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="0"
+                        Source="lock"
+                        Style="{StaticResource FrameStartIconStyle}" />
+                    <custom:CustomEntry
+                        x:Name="loginPasswordBox"
+                        Grid.Column="1"
+                        IsPassword="True"
+                        Placeholder="Password"
+                        Style="{DynamicResource MsgEntryStyle}"
+                        Text="{Binding LoginPassword}" />
+                    <Image
+                        x:Name="imgButton"
+                        Grid.Column="2"
+                        Source="hide_pass"
+                        Style="{StaticResource FrameEndIconStyle}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShowHidePassword_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <Grid Margin="0,5" ColumnDefinitions="1*,9*">
+                <CheckBox
+                    Grid.Column="0"
+                    IsChecked="{Binding IsChecked}"
+                    Color="{DynamicResource Primary}" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource RememberTitleStyle}"
+                    Text="Remember Login"
+                    VerticalOptions="CenterAndExpand" />
+            </Grid>
+
+            <Button
+                Command="{Binding LoginCommand}"
+                Style="{DynamicResource LoginButtonStyle}"
+                Text="Login"
+                VerticalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
