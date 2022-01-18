@@ -21,21 +21,21 @@
             ScaleOut="0.8" />
     </pages:PopupPage.Animation>
     <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
-    <AbsoluteLayout BackgroundColor="Transparent">
-        <Frame
-            Margin="20"
-            Padding="0"
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All"
-            BackgroundColor="{DynamicResource MainBackgroundColor}"
-            CornerRadius="10"
-            HasShadow="True"
-            HorizontalOptions="FillAndExpand"
-            IsClippedToBounds="True"
-            VerticalOptions="FillAndExpand">
+    <Frame
+        Margin="20"
+        Padding="0"
+        BackgroundColor="{DynamicResource MainBackgroundColor}"
+        CornerRadius="10"
+        HasShadow="True"
+        HorizontalOptions="FillAndExpand"
+        IsClippedToBounds="True"
+        VerticalOptions="FillAndExpand">
 
+        <AbsoluteLayout BackgroundColor="Transparent">
             <Grid
                 Padding="10,0"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
                 ColumnDefinitions="Auto,Auto"
                 RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
                 RowSpacing="15"
@@ -104,7 +104,7 @@
                     Margin="0"
                     FontSize="16"
                     HorizontalTextAlignment="End"
-                    Text="{Binding SelectedPrice}"
+                    Text="{Binding SelectedPrice, StringFormat='{0:N0} $'}"
                     TextColor="{DynamicResource HeaderTextColor}" />
                 <Label
                     Grid.Row="4"
@@ -112,41 +112,35 @@
                     FontAttributes="Bold"
                     FontSize="16"
                     HorizontalTextAlignment="Start"
-                    Text="QTY:"
+                    Text="Quantity:"
                     TextColor="{DynamicResource HeaderTextColor}" />
                 <StackLayout
                     Grid.Row="4"
                     Grid.Column="1"
                     Margin="0"
                     HorizontalOptions="EndAndExpand"
-                    Orientation="Horizontal">
-                    <Image
-                        HeightRequest="15"
-                        Source="down_indicator"
-                        VerticalOptions="Start"
-                        WidthRequest="15">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DownTapped" />
-                        </Image.GestureRecognizers>
-                    </Image>
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <ImageButton
+                        BackgroundColor="{DynamicResource BgGray}"
+                        Clicked="DownTapped"
+                        HeightRequest="20"
+                        Source="minus"
+                        VerticalOptions="Center"
+                        WidthRequest="20" />
                     <Label
-                        Grid.Row="4"
-                        Grid.Column="1"
                         Margin="0"
                         FontSize="16"
-                        HorizontalTextAlignment="End"
+                        HorizontalTextAlignment="Center"
                         Text="{Binding SelectedQTY}"
                         TextColor="{DynamicResource HeaderTextColor}" />
-                    <controls:TintedImage
-                        HeightRequest="15"
-                        Source="up_indicator"
-                        TintColor="Green"
-                        VerticalOptions="Start"
-                        WidthRequest="15">
-                        <controls:TintedImage.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="UpTapped" />
-                        </controls:TintedImage.GestureRecognizers>
-                    </controls:TintedImage>
+                    <ImageButton
+                        BackgroundColor="{DynamicResource BgGray}"
+                        Clicked="UpTapped"
+                        HeightRequest="20"
+                        Source="plus"
+                        VerticalOptions="Center"
+                        WidthRequest="20" />
                 </StackLayout>
 
                 <BoxView
@@ -169,27 +163,28 @@
                     Margin="0"
                     FontSize="16"
                     HorizontalTextAlignment="End"
-                    Text="{Binding SelectedTotal}"
+                    Text="{Binding SelectedTotal, StringFormat='{0:N0} $'}"
                     TextColor="{DynamicResource HeaderTextColor}" />
             </Grid>
-        </Frame>
-        <Button
-            x:Name="updateButton"
-            Margin="10"
-            AbsoluteLayout.LayoutBounds="0,1,1,-1"
-            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
-            Clicked="Update_Clicked"
-            CornerRadius="5"
-            FontSize="14"
-            HeightRequest="46"
-            Style="{DynamicResource LoginButtonStyle}"
-            Text="Update"
-            VerticalOptions="EndAndExpand">
-            <Button.Triggers>
-                <EventTrigger Event="Clicked">
-                    <local:ExpandButtonTriggerAction />
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-    </AbsoluteLayout>
+            <Button
+                x:Name="updateButton"
+                Margin="10"
+                AbsoluteLayout.LayoutBounds="0,1,1,-1"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                Clicked="Update_Clicked"
+                CornerRadius="5"
+                FontSize="14"
+                HeightRequest="46"
+                Style="{DynamicResource LoginButtonStyle}"
+                Text="Update"
+                VerticalOptions="EndAndExpand">
+                <Button.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <local:ExpandButtonTriggerAction />
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </AbsoluteLayout>
+    </Frame>
+
 </pages:PopupPage>

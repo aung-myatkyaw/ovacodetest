@@ -53,6 +53,13 @@ namespace OvaCodeTest.ViewModels
             set { SetProperty(ref selectedTotal, value); }
         }
 
+        double allTotal = 0;
+        public double AllTotal
+        {
+            get { return allTotal; }
+            set { SetProperty(ref allTotal, value); }
+        }
+
         bool refreshEnabled = true;
         public bool RefreshEnabled
         {
@@ -119,9 +126,35 @@ namespace OvaCodeTest.ViewModels
                     {
                         ShoppingList.Clear();
                         ShoppingDetailsList.Clear();
+                        AllTotal = 0;
 
                         resobj.RES_SHOPPING.ForEach(item => ShoppingList.Add(item));
-                        resobj.RES_SHOPPING_DETAIL.ForEach(item => ShoppingDetailsList.Add(item));
+
+                        // fill cart details list
+                        resobj.RES_SHOPPING_DETAIL.ForEach(item => 
+                        {
+                            if (!string.IsNullOrEmpty(item.StockCode) && item.StockName != "0")
+                            {
+                                if (double.TryParse(item.Price, out double price))
+                                {
+                                    item.Price = price.ToString();
+                                }
+
+                                if (decimal.TryParse(item.QTY, out decimal qty))
+                                {
+                                    int val = (int)qty;
+                                    item.QTY = val.ToString();
+                                }
+
+                                if (double.TryParse(item.TotalAmount, out double total))
+                                {
+                                    AllTotal += total;
+                                    item.TotalAmount = total.ToString();
+                                }
+
+                                ShoppingDetailsList.Add(item);
+                            }
+                        });
                     }
                     else
                     {

@@ -7,9 +7,9 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame
-                Margin="10,10,10,5"
+                Margin="10,10,10,0"
                 Padding="10"
-                BackgroundColor="{DynamicResource MainBackgroundColor}"
+                BackgroundColor="{DynamicResource BgGray}"
                 CornerRadius="20">
                 <ListView
                     x:Name="ShoppingListView"
@@ -46,14 +46,14 @@
                                             Grid.Column="1"
                                             FontSize="13"
                                             HorizontalOptions="EndAndExpand"
-                                            Text="{Binding Price}"
+                                            Text="{Binding Price, StringFormat='{0:N0} $'}"
                                             TextColor="{DynamicResource HeaderTextColor}" />
                                         <Label
                                             Grid.Row="1"
                                             Grid.Column="1"
                                             FontSize="13"
                                             HorizontalOptions="EndAndExpand"
-                                            Text="{Binding QTY}"
+                                            Text="{Binding QTY, StringFormat='{0:N0} pcs'}"
                                             TextColor="{DynamicResource HeaderTextColor}" />
                                     </Grid>
                                     <BoxView HeightRequest="0.5" Style="{StaticResource SeparatorStyle}" />
@@ -62,6 +62,44 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </Frame>
+            <Frame
+                x:Name="frmTotal"
+                Margin="10"
+                BackgroundColor="{DynamicResource BgGray}"
+                CornerRadius="10"
+                HasShadow="True">
+                <Grid ColumnDefinitions="2*, *, Auto" RowDefinitions="50">
+
+                    <Label
+                        Padding="0"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Total Amount"
+                        TextColor="{DynamicResource HeaderTextColor}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Grid.Column="1"
+                        Padding="0"
+                        FontFamily="NotoSansRegularCustomFont"
+                        FontSize="11"
+                        HorizontalOptions="End"
+                        Text="$"
+                        TextColor="DarkGray"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Grid.Column="2"
+                        Padding="0"
+                        FontSize="18"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{Binding AllTotal, StringFormat='{0:N0}'}"
+                        TextColor="{DynamicResource Primary}"
+                        VerticalOptions="CenterAndExpand" />
+
+                </Grid>
             </Frame>
         </StackLayout>
     </ContentPage.Content>

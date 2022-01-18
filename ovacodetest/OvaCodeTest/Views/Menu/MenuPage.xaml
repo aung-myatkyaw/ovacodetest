@@ -9,10 +9,12 @@
         <ToolbarItem Command="{Binding ShoppingCartCommand}" IconImageSource="cart" />
     </ContentPage.ToolbarItems>
 
-    <StackLayout>
+    <AbsoluteLayout>
         <Frame
             Margin="10,10,10,5"
             Padding="10"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
             BackgroundColor="{DynamicResource MainBackgroundColor}"
             CornerRadius="20">
             <ListView
@@ -53,6 +55,16 @@
                 </ListView.ItemTemplate>-->
             </ListView>
         </Frame>
-    </StackLayout>
+        <StackLayout
+            AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="{Binding ShowMenu, Converter={StaticResource InverseBoolConverter}}"
+            VerticalOptions="CenterAndExpand">
+
+            <Label Style="{StaticResource NoRecordTitle}" Text="No Data" />
+
+        </StackLayout>
+    </AbsoluteLayout>
 
 </ContentPage>

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CS.ERP.PL.POS.DAT;
 using OvaCodeTest.ViewModels;
-using OvaCodeTest.Views.MessagePopup;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -34,11 +32,11 @@ namespace OvaCodeTest.Views.ShoppingCart
         private async void ShoppingListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ShoppingListView.IsEnabled = false;
-            var selected = e.Item as RES_SHOPPING_DETAIL;
+            RES_SHOPPING_DETAIL selected = e.Item as RES_SHOPPING_DETAIL;
             if (selected != null)
             {
-                var shopping = shoppingCartViewModel.ShoppingList.Where(x => x.ShoppingCode == selected.ShoppingCode).FirstOrDefault();
-                var popup = new ShoppingPopupPage(shopping, selected);
+                RES_SHOPPING shopping = shoppingCartViewModel.ShoppingList.Where(x => x.ShoppingCode == selected.ShoppingCode).FirstOrDefault();
+                ShoppingPopupPage popup = new ShoppingPopupPage(shopping, selected);
                 popup.Disappearing += (sende, est) => { OnAppearing(); };
                 await PopupNavigation.Instance.PushAsync(popup);
             }

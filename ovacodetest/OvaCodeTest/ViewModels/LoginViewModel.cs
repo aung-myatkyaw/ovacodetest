@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using CS.ERP.PL.SYS.DAT;
 using CS.ERP.PL.SYS.REQ;
 using CS.ERP.PL.SYS.RES;
 using Newtonsoft.Json.Linq;
@@ -92,23 +93,19 @@ namespace OvaCodeTest.ViewModels
                             UserPassword = LoginPassword
                         };
                         JObject jObject = JObject.FromObject(obj);
-                        
-                        ////testing
-                        //App.AuthorizeObject = obj;
-                        //if (IsChecked)
-                        //{
-                        //    GlobalFunction.WriteAppSetting("Checked", "true");
-                        //    GlobalFunction.WriteAppSetting("Username", LoginUsername.Trim());
-                        //    GlobalFunction.WriteAppSetting("Password", LoginPassword.Trim());
-                        //}
-                        //else
-                        //{
-                        //    GlobalFunction.WriteAppSetting("Checked", "false");
-                        //}
-                        //Application.Current.MainPage = new AppShell();
 
                         // call login api
                         JSN_RES_MOBILE_LOGIN resobj = await loginService.LoginAsync(jObject);
+
+                        //// testing
+                        //JSN_RES_MOBILE_LOGIN resobj = new JSN_RES_MOBILE_LOGIN
+                        //{
+                        //    Message = new RES_MESSAGE
+                        //    {
+                        //        Code = "7",
+                        //        Message = "Success"
+                        //    }
+                        //};
 
                         if (resobj.Message.Code == "7")
                         {

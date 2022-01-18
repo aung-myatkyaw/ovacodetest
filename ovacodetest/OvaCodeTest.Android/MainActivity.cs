@@ -4,7 +4,6 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Acr.UserDialogs;
-using Plugin.CrossPlatformTintedImage.Android;
 using AndroidX.AppCompat.App;
 using Xamarin.Forms.Platform.Android;
 using Android.Views;
@@ -68,7 +67,6 @@ namespace OvaCodeTest.Droid
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             UserDialogs.Init(this);
             Rg.Plugins.Popup.Popup.Init(this);
-            TintedImageRenderer.Init();
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

@@ -2,7 +2,8 @@
 <Application
     x:Class="OvaCodeTest.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:OvaCodeTest.Converters">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -15,26 +16,6 @@
             <Color x:Key="SeperatorColor">#2A2B31</Color>
             <Color x:Key="BgGray">#F4F4F8</Color>
             <Color x:Key="AppGrey">#E6E6EF</Color>
-
-            <Style TargetType="Button">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="VisualStateManager.VisualStateGroups">
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                            <VisualState x:Name="Disabled">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196F3" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateGroupList>
-                </Setter>
-            </Style>
 
             <Style x:Key="LoginButtonStyle" TargetType="Button">
                 <Setter Property="TextColor" Value="{DynamicResource MainBackgroundColor}" />
@@ -106,6 +87,16 @@
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             </Style>
+
+            <Style x:Key="NoRecordTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="DarkGray" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="Margin" Value="0,10,0,0" />
+            </Style>
+
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
